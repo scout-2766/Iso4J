@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>iso4j.org</groupId>
+  <artifactId>iso4j.org</artifactId>
+  <version>1.0</version>
+  
+   <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+		<version.jdk>1.8</version.jdk>  <!-- 1.7 for JDK 7 -->
+		<version.mvn.compiler>3.3</version.mvn.compiler>
+		<version.gson>2.6.2</version.gson>
+		<project.build.finalName>iso4j.jar</project.build.finalName>
+  </properties>
+
+  	<repositories>
+		<repository>
+			<id>java.net-Public</id>
+			<name>Maven Java Net Snapshots and Releases</name>
+			<url>https://maven.java.net/content/groups/public/</url>
+			<layout>default</layout>
+		</repository>
+
+		<repository>
+			<id>Central</id>
+			<name>Maven Repository</name>
+			<url>http://repo1.maven.org/maven2</url>
+			<layout>default</layout>
+		</repository>
+
+		<repository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>http://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<url>http://download.eclipse.org/rt/eclipselink/maven.repo/</url>
+			<id>eclipselink</id>
+			<layout>default</layout>
+			<name>Repository for library EclipseLink (JPA 2.0)</name>
+		</repository>
+
+	</repositories>
+
+  	<dependencies>
+
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>${version.gson}</version>
+		</dependency>
+
+  	</dependencies>
+  	
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+   <resources>
+      <resource>
+        <directory>src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.3</version>
+        <configuration>
+ 			<source>${version.jdk}</source>
+			<target>${version.jdk}</target>
+	        <fork>true</fork>
+	        <executable>${JAVA_HOME}/bin/javac</executable>
+	        <compilerVersion>${version.jdk}</compilerVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
