@@ -9,6 +9,7 @@
 		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
 		<version.jdk>1.8</version.jdk>  <!-- 1.7 for JDK 7 -->
 		<version.mvn.compiler>3.3</version.mvn.compiler>
+		<version.mvn.jar>2.5</version.mvn.jar>
 		<version.gson>2.6.2</version.gson>
 		<project.build.finalName>iso4j.jar</project.build.finalName>
   </properties>
@@ -79,6 +80,29 @@
 	        <compilerVersion>${version.jdk}</compilerVersion>
         </configuration>
       </plugin>
+            <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+		<version>${version.mvn.jar}</version>
+        <executions>
+          <execution>
+ 	        <id>build-jar</id>
+	        <phase>package</phase>
+            <goals>
+                <goal>jar</goal>
+            </goals>
+            <configuration>
+              <useDefaultManifestFile>true</useDefaultManifestFile>
+              <finalName>iso4J-${project.version}</finalName>
+              <outputDirectory>bin</outputDirectory>
+	              <appendAssemblyId>false</appendAssemblyId>
+			  <includes>
+		   		<include>**/*.class</include>
+		   		<include>**/*.properties</include>
+   	   		  </includes>
+		   	</configuration>
+          </execution>
+        </executions>
+       </plugin>
     </plugins>
   </build>
 </project>
